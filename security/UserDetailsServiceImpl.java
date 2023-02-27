@@ -12,8 +12,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+    @Autowired
     private UsuarioRepository usuarioRepository;
+    @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         Optional<Usuario> usuario = usuarioRepository.findByUsuario(userName);
         if (usuario.isPresent())

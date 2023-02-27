@@ -67,6 +67,7 @@ public class UsuarioControllerTest {
         ResponseEntity<Usuario> corpoResposta = testRestTemplate
                 .withBasicAuth("root@root.com", "rootroot")
                 .exchange("/usuarios/atualizar", HttpMethod.PUT, corpoRequisicao, Usuario.class);
+        System.out.println(usuarioUpdate.getNome());
         assertEquals(HttpStatus.OK, corpoResposta.getStatusCode());
         assertEquals(corpoRequisicao.getBody().getNome(), corpoResposta.getBody().getNome());
         assertEquals(corpoRequisicao.getBody().getUsuario(), corpoResposta.getBody().getUsuario());
